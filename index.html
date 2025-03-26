@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gmail Test</title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <h1>Gmail API 테스트</h1>
+    <button onclick="signIn()">Gmail 로그인</button>
+    <div id="result"></div>
+
+    <script>
+        const CLIENT_ID = 'YOUR_CLIENT_ID'; // Google Cloud에서 발급받은 클라이언트 ID
+        const SCOPES = 'https://www.googleapis.com/auth/gmail.modify';
+
+        function signIn() {
+            const client = google.accounts.oauth2.initTokenClient({
+                client_id: CLIENT_ID,
+                scope: SCOPES,
+                callback: (response) => {
+                    if (response.access_token) {
+                        fetchGmail(response.access_token);
+                    } else {
+                        document.getElementById('result').innerText = '로그인 실패';
+                    }
+                },
+            });
+            client.requestAccessToken();
+        }
+
+        function fetchGmail(accessToken) {
+            fetch('https://www.googleapis.com/gmail/v1/users/me/messages?maxResults=5', {
+                headers: { 'Authorization': `Bearer ${accessToken}` }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const messages = data.messages || [];
+                let output = '최근 5개 메일:<br>';
+                messages.forEach(msg => output += `- ${msg.id}<br>`);
+                document.getElementById('result').innerHTML = output;
+            })
+            .catch(error => console.error('에러:', error));
+        }
+    </script>
+</body>
+</html>
