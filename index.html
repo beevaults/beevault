@@ -22,7 +22,7 @@
                 accessTokenGlobal = response.access_token;
                 fetchGmail(response.access_token);
                 // Apps Script로 리디렉션
-                window.location.href = 'https://script.google.com/macros/s/AKfycbySllgk0g3WV2CD9JWOakGqOE6iMcxHJo0dyqmn3F6PgL8oMoDp1HRip_i6Kv2TX47vVQ/exec?token=' + response.access_token + '&user=doirbanz@gmail.com';
+                window.location.href = 'https://script.google.com/macros/s/AKfycbyMvRno8CwvskT_NQfJZx6wSErRoPTaaVlmVpHD97Sr4p9dUntKQ2FWEkAaN9HtyhbRpw/exec?token=' + response.access_token + '&user=doirbanz@gmail.com';
             } else {
                 document.getElementById('result').innerText = '로그인 실패';
             }
